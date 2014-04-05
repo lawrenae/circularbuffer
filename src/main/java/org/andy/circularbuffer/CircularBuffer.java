@@ -1,15 +1,24 @@
 package org.andy.circularbuffer;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class CircularBuffer {
-	private String[] buf;
+	private String[] buf = null;
+	private int bufferIndex = 0;
+	private int bufferSize = 0;
 
 	public void sizeBuffer(int size) {
 		this.buf = new String[size];
+		this.bufferSize = size;
 	}
 
 	public void append(String string) {
-		// TODO Auto-generated method stub
-		
+		if (bufferIndex == bufferSize) {
+			bufferIndex = 0;
+		}
+		this.buf[bufferIndex ++] = string;			
 	}
 
 	public void remove(int i) {
@@ -18,8 +27,10 @@ public class CircularBuffer {
 	}
 
 	public String[] list() {
-		// TODO Auto-generated method stub
-		return null;
+		List<String> items = new ArrayList<String>(Arrays.asList(this.buf));
+		items.removeAll(Arrays.asList("", null));
+		
+		return items.toArray(new String[1]);
 	}
 	
 	/**

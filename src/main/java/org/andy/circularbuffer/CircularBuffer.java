@@ -17,9 +17,8 @@ public class CircularBuffer {
 		
 	}
 
-	public void list() {
+	public String[] list() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
-
 }

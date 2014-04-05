@@ -36,7 +36,9 @@ public class CircularBufferAppTests {
 						"Q\n";
 		app.process(input);
 		verify(buf).sizeBuffer(10);
-		verify(buf).append("Fee, Fi, Fo");
+		verify(buf).append("Fee");
+		verify(buf).append("Fi");
+		verify(buf).append("Fo");
 		verify(buf).append("Fum");
 		verify(buf).remove(2);
 		verify(buf).list();

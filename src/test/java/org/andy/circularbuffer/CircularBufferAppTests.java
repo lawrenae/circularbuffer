@@ -21,4 +21,26 @@ public class CircularBufferAppTests {
 	public void checkSanity() {
 		assertNotNull(app);
 	}
+
+	@Test
+	public void acceptance_test() {
+		String input =  "10\n" +
+						"A 3\n" +
+						"Fee\n" +
+						"Fi\n" +
+						"Fo\n" +
+						"A 1\n" +
+						"Fum\n" +
+						"R 2\n" +
+						"L\n" +
+						"Q\n";
+		app.process(input);
+		verify(buf).sizeBuffer(10);
+		verify(buf).append("Fee, Fi, Fo");
+		verify(buf).append("Fum");
+		verify(buf).remove(2);
+		verify(buf).list();
+		//does not validate the quit
+	}
+	
 }

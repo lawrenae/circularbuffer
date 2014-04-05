@@ -6,4 +6,9 @@ public class CircularBufferApp {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void process(String input) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

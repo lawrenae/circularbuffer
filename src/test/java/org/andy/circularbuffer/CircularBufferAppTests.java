@@ -24,16 +24,17 @@ public class CircularBufferAppTests {
 
 	@Test
 	public void acceptance_test() {
-		String input =  "10\n" +
-						"A 3\n" +
-						"Fee\n" +
-						"Fi\n" +
-						"Fo\n" +
-						"A 1\n" +
-						"Fum\n" +
-						"R 2\n" +
-						"L\n" +
-						"Q\n";
+		String[] input = new String[] { 
+						"10",
+						"A 3",
+						"Fee",
+						"Fi",
+						"Fo",
+						"A 1",
+						"Fum",
+						"R 2",
+						"L",
+						"Q" };
 		app.process(input);
 		verify(buf).sizeBuffer(10);
 		verify(buf).append("Fee");

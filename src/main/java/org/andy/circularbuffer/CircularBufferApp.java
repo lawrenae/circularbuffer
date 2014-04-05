@@ -1,7 +1,5 @@
 package org.andy.circularbuffer;
 
-import java.util.StringTokenizer;
-
 public class CircularBufferApp {
 	private CircularBuffer buf = null;
 
@@ -34,7 +32,7 @@ public class CircularBufferApp {
 				}
 			}
 			
-			if (cmd.startsWith("R")) {
+			if (cmd.startsWith("R ")) {
 				int numToRemove = Integer.parseInt(cmd.substring(2));
 				buf.remove(numToRemove);
 			}

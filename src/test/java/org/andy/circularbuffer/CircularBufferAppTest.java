@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import static org.mockito.Mockito.*;
 
-public class CircularBufferAppTests {
+public class CircularBufferAppTest {
 	CircularBufferApp app = null;
 	CircularBuffer buf = null;
 	

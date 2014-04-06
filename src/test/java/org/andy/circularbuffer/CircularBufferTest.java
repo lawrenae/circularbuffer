@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CircularBufferTests {
+public class CircularBufferTest {
 	private CircularBuffer b = null;
 	
 	@Before

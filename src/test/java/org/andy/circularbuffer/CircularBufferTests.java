@@ -48,6 +48,7 @@ public class CircularBufferTests {
 		b.append("fred");
 		b.append("tom");
 		b.append("jerry");
+		
 		String[] results = b.list();
 
 		assertThat(results.length, is(3));
@@ -55,4 +56,48 @@ public class CircularBufferTests {
 		assertThat(results[1], is("fred"));
 		assertThat(results[2], is("tom"));
 	}
+	
+	@Test
+	public void can_remove_an_element() {
+		b.append("bob");
+		b.append("fred");
+		b.append("tom");
+		b.append("jerry");
+		
+		b.remove(1);
+		String[] results = b.list();
+
+		assertThat(results.length, is(3));
+		assertThat(results[0], is("fred"));
+		assertThat(results[1], is("tom"));
+		assertThat(results[2], is("jerry"));
+	}
+	
+	@Test
+	public void can_remove_two_elements_separately() {
+		b.append("bob");
+		b.append("fred");
+		b.append("tom");
+		b.append("jerry");
+		
+		b.remove(1);
+		String[] results = b.list();
+
+		assertThat(results.length, is(3));
+		assertThat(results[0], is("fred"));
+		assertThat(results[1], is("tom"));
+		assertThat(results[2], is("jerry"));
+		
+		b.remove(1);
+		results = b.list();
+
+		assertThat(results.length, is(2));
+		assertThat(results[0], is("tom"));
+		assertThat(results[1], is("jerry"));
+	}
+	
+	//Future test
+	//Whenever L command appears in the input, 
+	//print the elements of buffer in order of their inserting time. 
+	//Element that was added first should appear first.
 }

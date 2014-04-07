@@ -40,22 +40,6 @@ public class CircularBufferTest {
 		String[] results = b.list();
 		assertThat(results.length, is(2));		
 	}
-
-	@Test
-	public void can_add_more_elements_than_buffer_size() {
-		b.sizeBuffer(3);
-		b.append("bob");
-		b.append("fred");
-		b.append("tom");
-		b.append("jerry");
-		
-		String[] results = b.list();
-
-		assertThat(results.length, is(3));
-		assertThat(results[0], is("jerry"));
-		assertThat(results[1], is("fred"));
-		assertThat(results[2], is("tom"));
-	}
 	
 	@Test
 	public void can_remove_an_element() {
@@ -96,8 +80,22 @@ public class CircularBufferTest {
 		assertThat(results[1], is("jerry"));
 	}
 	
-	//Future test
+	
 	//Whenever L command appears in the input, 
 	//print the elements of buffer in order of their inserting time. 
 	//Element that was added first should appear first.
+	@Test
+	public void can_print_oldest_first() {
+		b.sizeBuffer(3);
+		b.append("bob");
+		b.append("fred");
+		b.append("tom");
+		b.append("jerry");
+		
+		String[] results = b.list();
+		
+		assertThat(results[0], is("fred"));
+		assertThat(results[1], is("tom"));
+		assertThat(results[2], is("jerry"));
+	}
 }

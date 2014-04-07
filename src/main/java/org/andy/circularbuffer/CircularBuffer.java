@@ -31,7 +31,12 @@ public class CircularBuffer {
 	}
 
 	public String[] list() {
-		List<String> items = new ArrayList<String>(Arrays.asList(this.buf));
+		List<String> items = new ArrayList<String>(
+				Arrays.asList(Arrays.copyOfRange(this.buf, addIndex, buf.length)));
+		items.addAll(
+				Arrays.asList(Arrays.copyOfRange(this.buf, removeIndex, addIndex)));
+		
+		
 		items.removeAll(Arrays.asList("", null));
 		
 		return items.toArray(new String[1]);

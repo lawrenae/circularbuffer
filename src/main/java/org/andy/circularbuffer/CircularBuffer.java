@@ -23,7 +23,8 @@ public class CircularBuffer {
 	}
 
 	public void remove(int count) {
-		for (int i=removeIndex;i<count;i++) {
+		int stopAt = removeIndex + count;
+		for (int i=removeIndex; i<stopAt; i++) {
 			this.buf[i] = null;
 			removeIndex++;
 		}

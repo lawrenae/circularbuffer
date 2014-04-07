@@ -12,6 +12,9 @@ public class CircularBuffer {
 	private int removeIndex = 0;
 	private int bufferSize = 0;
 
+	/*
+	 * Does not handle /re/sizing a buffer after entries exist
+	 */
 	public void sizeBuffer(int size) {
 		this.buf = new String[size];
 		this.bufferSize = size;
@@ -21,7 +24,7 @@ public class CircularBuffer {
 		if (addIndex >= bufferSize) {
 			addIndex = 0;
 		}
-		this.buf[addIndex ++] = string;			
+		this.buf[addIndex++] = string;			
 	}
 
 	public void remove(int count) {
@@ -33,7 +36,7 @@ public class CircularBuffer {
 	}
 
 	public String[] list() {
-		String[] temp = ArrayUtils.addAll( 
+		String[] temp = ArrayUtils.addAll(
 				Arrays.copyOfRange(this.buf, addIndex, buf.length), 
 				Arrays.copyOfRange(this.buf, removeIndex, addIndex));
 				

@@ -26,7 +26,7 @@ public class CircularBufferApp {
 	
 	
 	public static String print(String[] process) {
-		StringBuffer result = new StringBuffer("");
+		StringBuilder result = new StringBuilder("");
 		if (process != null) {
 			for(String s: process) {
 				result.append(s + "\n");
@@ -54,9 +54,9 @@ public class CircularBufferApp {
 			return null;
 		}
 		
-		if (this.appending) {
-			this.buf.append(input);
-			this.numAppended++;
+		if (appending) {
+			buf.append(input);
+			numAppended++;
 			if (numAppended == numToAppend) {
 				appending = false;
 				numAppended = 0;

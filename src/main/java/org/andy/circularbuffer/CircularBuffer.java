@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 public class CircularBuffer {
 	private String[] buf = null;
 	private int addIndex = 0;
@@ -31,15 +33,14 @@ public class CircularBuffer {
 	}
 
 	public String[] list() {
-		List<String> items = new ArrayList<String>(
-				Arrays.asList(Arrays.copyOfRange(this.buf, addIndex, buf.length)));
-		items.addAll(
-				Arrays.asList(Arrays.copyOfRange(this.buf, removeIndex, addIndex)));
+		String[] temp = ArrayUtils.addAll( 
+				Arrays.copyOfRange(this.buf, addIndex, buf.length), 
+				Arrays.copyOfRange(this.buf, removeIndex, addIndex));
+				
+		List<String> results = new ArrayList<String>(Arrays.asList(temp));
+		results.removeAll(Arrays.asList("", null));
 		
-		
-		items.removeAll(Arrays.asList("", null));
-		
-		return items.toArray(new String[1]);
+		return results.toArray(new String[1]);
 	}
 	
 	/**

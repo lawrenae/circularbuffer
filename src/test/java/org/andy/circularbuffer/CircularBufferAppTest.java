@@ -24,18 +24,17 @@ public class CircularBufferAppTest {
 
 	@Test
 	public void acceptance_test() {
-		String[] input = new String[] { 
-						"10",
-						"A 3",
-						"Fee",
-						"Fi",
-						"Fo",
-						"A 1",
-						"Fum",
-						"R 2",
-						"L",
-						"Q" };
-		app.process(input);
+		app.process("10");
+		app.process("A 3");
+		app.process("Fee");
+		app.process("Fi");
+		app.process("Fo");
+		app.process("A 1");
+		app.process("Fum");
+		app.process("R 2");
+		app.process("L");
+		app.process("Q");
+		
 		verify(buf).sizeBuffer(10);
 		verify(buf).append("Fee");
 		verify(buf).append("Fi");
@@ -45,5 +44,4 @@ public class CircularBufferAppTest {
 		verify(buf).list();
 		//does not validate the quit
 	}
-	
 }

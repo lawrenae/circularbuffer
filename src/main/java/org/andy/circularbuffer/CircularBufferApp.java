@@ -25,7 +25,7 @@ public class CircularBufferApp {
 	}
 	
 	
-	public static String print(String[] process) {
+	static String print(String[] process) {
 		StringBuilder result = new StringBuilder("");
 		if (process != null) {
 			for(String s: process) {

@@ -6,6 +6,16 @@ import java.util.List;
 
 import org.apache.commons.lang3.ArrayUtils;
 
+/**
+ * a Java implementation of a circular buffer
+ * @author alawrence
+ * Possible further improvements
+ * <ul>
+ *   <li> not use String[] but Object[]
+ *   <li> fix bufferSizing to be part of constructor. (current way is due to testability)
+ * </ul> 
+ */
+
 public class CircularBuffer {
 	private String[] buf = null;
 	private int addIndex = 0;

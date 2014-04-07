@@ -1,6 +1,7 @@
 package org.andy.circularbuffer;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +20,7 @@ public class CircularBufferAppTest {
 
 	@Test
 	public void checkSanity() {
-		assertNotNull(app);
+		assertThat(app, is(notNullValue()));
 	}
 
 	@Test
@@ -43,5 +44,17 @@ public class CircularBufferAppTest {
 		verify(buf).remove(2);
 		verify(buf).list();
 		//does not validate the quit
+	}
+	
+	@Test
+	public void print_handles_nulls() {
+		String results = CircularBufferApp.print(null);
+		assertThat(results, is(""));
+	}
+	
+	@Test
+	public void print_handles_array() {
+		String results = CircularBufferApp.print(new String[] {"hi", "there"});
+		assertThat(results, is("hi\nthere\n"));
 	}
 }

@@ -16,7 +16,7 @@ public class CircularBufferApp {
 			scanner = new Scanner(System.in);
 		    String input = scanner.nextLine();
 		    while (! "Q".equalsIgnoreCase(input)) {
-		    	System.out.println(app.process(input));
+		    	System.out.print(print(app.process(input)));
 		    	input = scanner.nextLine();
 		    }
 		} finally {
@@ -25,6 +25,18 @@ public class CircularBufferApp {
 	}
 	
 	
+	public static String print(String[] process) {
+		StringBuffer result = new StringBuffer("");
+		if (process != null) {
+			for(String s: process) {
+				result.append(s + "\n");
+			}
+		}
+		
+		return result.toString();
+	}
+
+
 	public CircularBufferApp(CircularBuffer buf) {
 		this.buf = buf;
 	}

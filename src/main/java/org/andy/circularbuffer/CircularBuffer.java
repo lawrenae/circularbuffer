@@ -6,7 +6,8 @@ import java.util.List;
 
 public class CircularBuffer {
 	private String[] buf = null;
-	private int bufferIndex = 0;
+	private int addIndex = 0;
+	private int removeIndex = 0;
 	private int bufferSize = 0;
 
 	public void sizeBuffer(int size) {
@@ -15,15 +16,18 @@ public class CircularBuffer {
 	}
 
 	public void append(String string) {
-		if (bufferIndex == bufferSize) {
-			bufferIndex = 0;
+		if (addIndex >= bufferSize) {
+			addIndex = 0;
 		}
-		this.buf[bufferIndex ++] = string;			
+		this.buf[addIndex ++] = string;			
 	}
 
-	public void remove(int i) {
-		// TODO Auto-generated method stub
-		
+	public void remove(int count) {
+		int stopAt = removeIndex + count;
+		for (int i=removeIndex; i<stopAt; i++) {
+			this.buf[i] = null;
+			removeIndex++;
+		}
 	}
 
 	public String[] list() {
